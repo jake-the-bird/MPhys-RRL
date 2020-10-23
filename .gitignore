@@ -1,0 +1,11 @@
+data
+example_data
+22870.ipynb
+
+test_photometry/data
+test_photometry/example_data
+test_photometry/images
+test_photometry/outputs
+test_photometry/.ipynb_checkpoints
+
+*.fits
