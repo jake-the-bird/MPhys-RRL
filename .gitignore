@@ -7,5 +7,10 @@ test_photometry/example_data
 test_photometry/images
 test_photometry/outputs
 test_photometry/.ipynb_checkpoints
+test_photometry/gloess-master
+test_photometry/__pycache__
 
 *.fits
+*.eps
+*.glo_avs
+*.glo_fits
