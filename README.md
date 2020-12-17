@@ -16,6 +16,8 @@ Runs only on individual, known RRL, from initial photometry through to plotting 
 ### ***PHOTOMETRY_SCHMOTOMETRY***:
 Similar to ***BIGSCRIPT***, but this runs on the whole frame, non-variables and variables alike, so it's good for looking at measures of variability and other fun stuffs. There are separate versions for PAL5 and PAL13 currently. These are still a little bloated, and also need commenting properly.
 
+- Channel 2 for PAL13 doesn't currently work - joining photometry tables in the main photometry cell messes up and you end up with 14 million rows - hence the need for ***BIGSCRIPT***. Only use channel 1 for PAL13 please thank you
+
 ### ***Data***:
 - RRL databases gathered mostly from Christine Clement's Catalogue of Variable Stars (and some Gaia data) are in *final_scripts/data/reference/*, and are required when running any of the main scripts.
 - Also, though they're not uploaded for storage's sake, *.fits* data files for each cluster should be placed in the *final_scripts/data/[cluster_name]/* folder in the same format and folder structure as provided by Vicky.
