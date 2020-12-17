@@ -10,7 +10,13 @@ test_photometry/.ipynb_checkpoints
 test_photometry/gloess-master
 test_photometry/__pycache__
 
+final_scripts/.ipynb_checkpoints
+final_scripts/__pycache__
+final_scripts/images
+final_scripts/outputs
+
 *.fits
 *.eps
 *.glo_avs
 *.glo_fits
+*.tbl
