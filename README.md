@@ -2,7 +2,7 @@
 
 Oh hello! Are you here for the tour? Come on in! Please excuse me while I slowly lose my miiiiind
 
-## final_scripts
+## /final_scripts/
 
 Contains (mostly) final versions of the code being used for the project.
 
@@ -21,7 +21,7 @@ Similar to ***BIGSCRIPT***, but this runs on the whole frame, non-variables and 
 - Also, though they're not uploaded for storage's sake, *.fits* data files for each cluster should be placed in the *final_scripts/data/[cluster_name]/* folder in the same format and folder structure as provided by Vicky.
 
 
-## test_photometry
+## /test_photometry/
 
 Basically the working directory for most of the project. Includes big photometry scripts, tests for various features, and a few wee ideas I occasionally refer back to, but for the most part can be ignored.
 
