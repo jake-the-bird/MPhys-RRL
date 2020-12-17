@@ -10,6 +10,7 @@ Contains (mostly) final versions of the code being used for the project.
 Runs only on individual, known RRL, from initial photometry through to plotting PL relations and calculating distances. Currently works for both PAL5 and PAL13 - cluster, channel etc. can be selected in the **Initial conditions** section. Some notes:
 
 - ePSF models need to be generated from either the PAL5 or PAL13 version of ***PHOTOMETRY_SCHMOTOMETRY*** for now; these are saved to file using *pickle* (as are some of the photometry tables generated) and imported back in ***BIGSCRIPT***.
+- There are two photometry modes implemented, **aperture** and **PSF**. **aperture** photometry alone was mostly used during testing and writing the scripts, and may not currently work because I don't have the energy to go and tweak it right now. **PSF** photometry is the final approach taken with all the data, and is what's being used to generate final results.
 - Still needs to be commented/annotated properly, sorryyyy
 
 ### ***PHOTOMETRY_SCHMOTOMETRY***:
