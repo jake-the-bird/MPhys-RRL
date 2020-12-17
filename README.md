@@ -24,3 +24,21 @@ Similar to ***BIGSCRIPT***, but this runs on the whole frame, non-variables and 
 ## test_photometry
 
 Basically the working directory for most of the project. Includes big photometry scripts, tests for various features, and a few wee ideas I occasionally refer back to, but for the most part can be ignored.
+
+
+## Folders I generate stuff into
+
+You may need to create blank versions of these folders in *final_scripts* (and *test_photometry* if you use it) for things to appear in.
+
+- epsf_models/PAL5/ and /PAL13/
+- images/PAL5/ and /PAL13/
+  - /aligning/
+  - /curves/
+    - /gaia/
+  - /variability/
+- outputs/PAL5/ and /PAL13/
+  - /matching/
+  - /residuals/
+- phot_tables/PAL5/ and /PAL13/
+  - /epochs/
+  - /individual/
