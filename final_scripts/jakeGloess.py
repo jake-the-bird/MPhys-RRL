@@ -116,7 +116,9 @@ def runGloess(mag_ch1, err_ch1, mag_ch2, err_ch2, LC_time, period, starname, xir
     if nir1 > 0:
         ir11, ir1x, yir1, yeir1, xphaseir1 = gf.fit_one_band(ir1,eir1,phase,nir1,xir1)
         ax1.plot(ir1x,ir11-1.4,'k-')
-        ax1.plot(xphaseir1,yir1-1.4,color='MediumVioletRed',marker='o',ls='None', label='$[3.6]-1.4$')
+        #ax1.errorbar(ir1x, ir11-1.4, yerr=yeir1, fmt='x', color='black', capsize=3, markersize=8)
+        #ax1.plot(xphaseir1,yir1-1.4,color='MediumVioletRed',marker='o',ls='None', label='$[3.6]-1.4$')
+        ax1.errorbar(xphaseir1,yir1-1.4,yerr=yeir1,color='MediumVioletRed',marker='o',ls='None', label='$[3.6]-1.4$')
     ## for RRLyrae WISE plots:
     #	ax1.plot(ir1x,ir11+1.,'k-')
     # 	ax1.plot(xphaseir1,yir1+1.,color='Turquoise',marker='o',ls='None', label='W1+1.0')
@@ -125,17 +127,22 @@ def runGloess(mag_ch1, err_ch1, mag_ch2, err_ch2, LC_time, period, starname, xir
             factor = np.sqrt(nir1)
         if phased == 0:
             factor = 1 
+        sdevir1 = sdevir1 / factor  # this way, the value spat out at the end should include this factor
         if nir1 > 1:
-            #print('<[3.6]> = {0:.3f}    std dev = {1:.3f}     amplitude = {2:.3f} N ir1 = {3}'.format(aveir1, sdevir1/factor, ampir1,nir1), file = avsout)
-            print('<[3.6]> = {0:.3f}    std dev = {1:.3f}     amplitude = {2:.3f}' .format(aveir1, sdevir1/factor, ampir1))
+            #print('<[3.6]> = {0:.3f}    std dev = {1:.3f}     amplitude = {2:.3f} N ir1 = {3}'.format(aveir1, sdevir1, ampir1,nir1), file = avsout)
+            print('<[3.6]> = {0:.3f}    std dev = {1:.3f}     amplitude = {2:.3f}' .format(aveir1, sdevir1, ampir1))
         if nir1 == 1:
             #print('[3.6] = {0:.3f} --- single point'.format(aveir1), file=avsout)
             print('[3.6] = {0:.3f} --- single point'.format(aveir1))
-            
-        ax2.axis([1,3.5,(np.average(ir11[200:300]) + 0.4),(np.average(ir11[200:300]) - 0.4)])
+
+        try:    
+            ax2.axis([1,3.5,(np.average(ir11[200:300]) + 0.4),(np.average(ir11[200:300]) - 0.4)])
+        except ValueError:
+            ax2.axis([1,3.5,16,15])
         ax2.yaxis.tick_right()
         ax2.plot(ir1x,ir11,'k-')
-        ax2.plot(xphaseir1,yir1,color='MediumVioletRed',marker='o',ls='None', label='$[3.6]$')
+        #ax2.plot(xphaseir1,yir1,color='MediumVioletRed',marker='o',ls='None', label='$[3.6]$')
+        ax2.errorbar(xphaseir1,yir1,yerr=yeir1,color='MediumVioletRed',marker='o',ls='None', label='$[3.6]$')
         ax2.annotate('$[3.6]$', xy=(0.04, 0.8375), xycoords='axes fraction', fontsize=16)
     else:
         aveir1 = float("NaN")
@@ -145,7 +152,9 @@ def runGloess(mag_ch1, err_ch1, mag_ch2, err_ch2, LC_time, period, starname, xir
     if nir2 > 0:
         ir21, ir2x, yir2, yeir2, xphaseir2 = gf.fit_one_band(ir2,eir2,phase,nir2,xir2)
         ax1.plot(ir2x,ir21-1.8,'k-')
-        ax1.plot(xphaseir2,yir2-1.8,color='DeepPink',marker='o',ls='None', label='$[4.5]-1.8$')
+        #ax1.errorbar(ir2x, ir21-1.8, yerr=yeir2, fmt='x', color='black', capsize=3, markersize=8)
+        #ax1.plot(xphaseir2,yir2-1.8,color='DeepPink',marker='o',ls='None', label='$[4.5]-1.8$')
+        ax1.errorbar(xphaseir2,yir2-1.8,yerr=yeir2,color='DeepPink',marker='o',ls='None', label='$[4.5]-1.8$')
     ## For RRLyrae WISE plots:
     #	ax1.plot(ir2x,ir21,'k-')
     # 	ax1.plot(xphaseir2,yir2,color='Gold',marker='o',ls='None', label='W2')
@@ -154,17 +163,22 @@ def runGloess(mag_ch1, err_ch1, mag_ch2, err_ch2, LC_time, period, starname, xir
             factor = np.sqrt(nir2)
         if phased == 0:
             factor = 1
+        sdevir2 = sdevir2 / factor
         if nir2 > 1:
-            #print('<[4.5]> = {0:.3f}    std dev = {1:.3f}     amplitude = {2:.3f} N IR2 = {3}'.format(aveir2, sdevir2/factor, ampir2,nir2), file = avsout)
-            print('<[4.5]> = {0:.3f}    std dev = {1:.3f}     amplitude = {2:.3f}' .format(aveir2, sdevir2/factor, ampir2))
+            #print('<[4.5]> = {0:.3f}    std dev = {1:.3f}     amplitude = {2:.3f} N IR2 = {3}'.format(aveir2, sdevir2, ampir2,nir2), file = avsout)
+            print('<[4.5]> = {0:.3f}    std dev = {1:.3f}     amplitude = {2:.3f}' .format(aveir2, sdevir2, ampir2))
         if nir2 == 1:
             #print('[4.5] = {0:.3f} --- single point'.format(aveir2), file = avsout)
             print('[4.5] = {0:.3f} --- single point'.format(aveir2))
-            
-        ax3.axis([1,3.5,(np.average(ir21[200:300]) + 0.4),(np.average(ir21[200:300]) - 0.4)])
+
+        try:    
+            ax3.axis([1,3.5,(np.average(ir21[200:300]) + 0.4),(np.average(ir21[200:300]) - 0.4)])
+        except ValueError:
+            ax3.axis([1,3.5,16,15])
         ax3.yaxis.tick_right()
         ax3.plot(ir2x,ir21,'k-')
-        ax3.plot(xphaseir2,yir2,color='DeepPink',marker='o',ls='None', label='$[3.6]$')
+        #ax3.plot(xphaseir2,yir2,color='DeepPink',marker='o',ls='None', label='$[3.6]$')
+        ax3.errorbar(xphaseir2,yir2,yerr=yeir2,color='DeepPink',marker='o',ls='None', label='$[4.5]$')
         ax3.annotate('$[4.5]$', xy=(0.04, 0.8375), xycoords='axes fraction',fontsize=16)
     else:
         aveir2 = float("NaN")
@@ -197,8 +211,8 @@ def runGloess(mag_ch1, err_ch1, mag_ch2, err_ch2, LC_time, period, starname, xir
             #print('<[3.6] - [4.5]> = {0:.3f}    std dev = {1:.3f}     amplitude = {2:.3f}' .format(avecol, sdevcol/factor, ampcol), file = avsout)
             print('<[3.6] - [4.5]> = {0:.3f}    std dev = {1:.3f}     amplitude = {2:.3f}' .format(avecol, sdevcol/factor, ampcol))
 
-            print(np.average(ir11[200:300]) + 0.3)
-            print(np.average(ir11[200:300]) - 0.3)
+            #print(np.average(ir11[200:300]) + 0.3)
+            #print(np.average(ir11[200:300]) - 0.3)
 
 
             #divider = make_axes_locatable(ax1)
@@ -229,4 +243,4 @@ def runGloess(mag_ch1, err_ch1, mag_ch2, err_ch2, LC_time, period, starname, xir
     plt.show()
     #fitout.close()
 
-    return aveir1, ampir1, sdevir1, aveir2, ampir2, sdevir2
+    return aveir1, ampir1, sdevir1, nir1, aveir2, ampir2, sdevir2, nir2
